@@ -26,7 +26,7 @@ public struct Card
         Ace
     }
 
-    enum Infusion
+    public enum Infusion
     {
         Fire,
         Ice,
@@ -34,7 +34,7 @@ public struct Card
         Special
     }
 
-    private Suit suit;
-    private Rank rank;
-    private Infusion infusion;
+    public Suit suit;
+    public Rank rank;
+    public Infusion infusion;
 }
