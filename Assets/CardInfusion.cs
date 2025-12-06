@@ -89,61 +89,25 @@ public class CardInfusion
         }
         else if (card.infusion == Card.Infusion.Fire && card.suit == Card.Suit.Club)
         {
-            if (card.rank == Card.Rank.N1)
+            if (card.rank.IsNumberCard())
             {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N2)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N3)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N4)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N5)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N6)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N7)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N8)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N9)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N10)
-            {
-                return "";
+                return "" + card.rank.ToNumber() + " damage to a single target";
             }
             else if (card.rank == Card.Rank.Jack)
             {
-                return "";
+                return "Deal 20 damage to a single target";
             }
             else if (card.rank == Card.Rank.Queen)
             {
-                return "";
+                return "Deal 30 damage to a single target";
             }
             else if (card.rank == Card.Rank.King)
             {
-                return "";
+                return "Deal 40 damage to a single target";
             }
             else if (card.rank == Card.Rank.Ace)
             {
-                return "";
+                return "Deal 50 damage to a single target";
             }
             else
             {
