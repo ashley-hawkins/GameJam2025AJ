@@ -7,62 +7,26 @@ public class CardInfusion
 {
     public string InfusionType(Card card)
     {
-        if (card.infusion == Card.Infusion.Fire && card.suit == Card.Suit.Diamond){
-            if (card.rank == Card.Rank.N1)
+        if (card.infusion == Card.Infusion.Fire && card.suit == Card.Suit.Diamond) {
+            if (card.rank.IsNumberCard())
             {
-                return "take negative effects from the target and give to the caster";
+                return "Decrease attack by " + card.rank.ToNumber() + "%";
             }
-            else if (card.rank == Card.Rank.N2)
+            else if (card.rank == Card.Rank.Jack)
             {
-                return "if receiver is weak to fire, increase the following by 100%: damage reduced by 5%";
+                return "Decrease attack by 20%";
             }
-            else if(card.rank == Card.Rank.N3)
+            else if (card.rank == Card.Rank.Queen)
             {
-                return "if receiver is weak to fire, increase the following by 100%: damage increased by 5%";
+                return "Decrease attack by 30%";
             }
-            else if(card.rank == Card.Rank.N4)
+            else if (card.rank == Card.Rank.King)
             {
-                return "if receiver is weak to fire, increase the following by 100 %: damage received decreased by 5%";
+                return "Decrease attack by 40%";
             }
-            else if(card.rank == Card.Rank.N5)
+            else if (card.rank == Card.Rank.Ace)
             {
-                return "if receiver is weak to fire, increase the following by 100 %: damage received increased by 5%";
-            }
-            else if(card.rank == Card.Rank.N6)
-            {
-                return "if receiver is weak to fire, increase the following by 100 %: deal damage for 1 hp per turn for 2 turns";
-            }
-            else if(card.rank == Card.Rank.N7)
-            {
-                return "if receiver is weak to fire, increase the following by 100 %: damage reduced by 20%";
-            }
-            else if(card.rank == Card.Rank.N8)
-            {
-                return "if receiver is weak to fire, increase the following by 100 %: damage increased by 20%";
-            }
-            else if(card.rank == Card.Rank.N9)
-            {
-                return "if receiver is weak to fire, increase the following by 100 %: damage received decreased by 20%";
-            }
-            else if(card.rank == Card.Rank.N10)
-            {
-                return "if receiver is weak to fire, increase the following by 100 %: damage received increased by 20%";
-            }
-            else if(card.rank == Card.Rank.Jack)
-            {
-                return "if receiver is weak to fire, increase the following by 100 %: damage by 10% max per turn for 6 turns";
-            }
-            else if(card.rank == Card.Rank.Queen)
-            {
-                return "if receiver is weak to fire, increase the following by 100 %: damage out increased by 50% and damage received decreased by 50%";
-            }
-            else if(card.rank == Card.Rank.King)
-            {
-                return "if receiver is weak to fire, increase the following by 100 %: damage out reduced by 50% and damage received increased by 50%";
-            }
-            else if(card.rank == Card.Rank.Ace)
-            {
-                return "if receiver is weak to fire, increase the following by 100 %: reduces damage out to 0 for 1 turn and damages by 20% per turn for 4 turns";
+                return "Decrease attack by 50%";
             }
             else
             {
@@ -71,61 +35,25 @@ public class CardInfusion
         }
         else if (card.infusion == Card.Infusion.Fire && card.suit == Card.Suit.Heart)
         {
-            if (card.rank == Card.Rank.N1)
+            if (card.rank.IsNumberCard())
             {
-                return " ";
-            }
-            else if (card.rank == Card.Rank.N2)
-            {
-                return "if receiver is weak to fire, increase the following by 100 %:";
-            }
-            else if (card.rank == Card.Rank.N3)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N4)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N5)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N6)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N7)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N8)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N9)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N10)
-            {
-                return "";
+                return "Heal by " + card.rank.ToNumber() + "%";
             }
             else if (card.rank == Card.Rank.Jack)
             {
-                return "";
+                return "Heal by 20%";
             }
             else if (card.rank == Card.Rank.Queen)
             {
-                return "";
+                return "Heal by 30%";
             }
             else if (card.rank == Card.Rank.King)
             {
-                return "";
+                return "Heal by 40%";
             }
             else if (card.rank == Card.Rank.Ace)
             {
-                return "";
+                return "Heal by 50%";
             }
             else
             {
@@ -134,61 +62,25 @@ public class CardInfusion
         }
         else if (card.infusion == Card.Infusion.Fire && card.suit == Card.Suit.Spade)
         {
-            if (card.rank == Card.Rank.N1)
+            if (card.rank.IsNumberCard())
             {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N2)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N3)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N4)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N5)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N6)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N7)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N8)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N9)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N10)
-            {
-                return "";
+                return "Deal " + card.rank.ToNumber() + " damage to a single target";
             }
             else if (card.rank == Card.Rank.Jack)
             {
-                return "";
+                return "Deal 20 damage to a single target";
             }
             else if (card.rank == Card.Rank.Queen)
             {
-                return "";
+                return "Deal 30 damage to a single target";
             }
             else if (card.rank == Card.Rank.King)
             {
-                return "";
+                return "Deal 40 damage to a single target";
             }
             else if (card.rank == Card.Rank.Ace)
             {
-                return "";
+                return "Deal 50 damage to a single target";
             }
             else
             {
@@ -260,61 +152,25 @@ public class CardInfusion
         }
         else if (card.infusion == Card.Infusion.Ice && card.suit == Card.Suit.Diamond)
         {
-            if (card.rank == Card.Rank.N1)
+            if (card.rank.IsNumberCard())
             {
-                return "take negative effects from the target and give to the caster";
-            }
-            else if (card.rank == Card.Rank.N2)
-            {
-                return "if receiver is weak to ice, increase the following by 100%: damage reduced by 5%";
-            }
-            else if (card.rank == Card.Rank.N3)
-            {
-                return "if receiver is weak to ice, increase the following by 100%: damage increased by 5%";
-            }
-            else if (card.rank == Card.Rank.N4)
-            {
-                return "if receiver is weak to ice, increase the following by 100 %: damage received decreased by 5%";
-            }
-            else if (card.rank == Card.Rank.N5)
-            {
-                return "if receiver is weak to ice, increase the following by 100 %: damage received increased by 5%";
-            }
-            else if (card.rank == Card.Rank.N6)
-            {
-                return "if receiver is weak to ice, increase the following by 100 %: deal damage for 1 hp per turn for 2 turns";
-            }
-            else if (card.rank == Card.Rank.N7)
-            {
-                return "if receiver is weak to ice, increase the following by 100 %: damage reduced by 20%";
-            }
-            else if (card.rank == Card.Rank.N8)
-            {
-                return "if receiver is weak to ice, increase the following by 100 %: damage increased by 20%";
-            }
-            else if (card.rank == Card.Rank.N9)
-            {
-                return "if receiver is weak to ice, increase the following by 100 %: damage received decreased by 20%";
-            }
-            else if (card.rank == Card.Rank.N10)
-            {
-                return "if receiver is weak to ice, increase the following by 100 %: damage received increased by 20%";
+                return "increase defence by " + card.rank.ToNumber() + "%";
             }
             else if (card.rank == Card.Rank.Jack)
             {
-                return "if receiver is weak to ice, increase the following by 100 %: damage by 10% max per turn for 6 turns";
+                return "increase defence by 20%";
             }
             else if (card.rank == Card.Rank.Queen)
             {
-                return "if receiver is weak to ice, increase the following by 100 %: damage out increased by 50% and damage received decreased by 50%";
+                return "Increase defence by 30%";
             }
             else if (card.rank == Card.Rank.King)
             {
-                return "if receiver is weak to ice, increase the following by 100 %: damage out reduced by 50% and damage received increased by 50%";
+                return "Increase defence by 40%";
             }
             else if (card.rank == Card.Rank.Ace)
             {
-                return "if receiver is weak to ice, increase the following by 100 %: reduces damage out to 0 for 1 turn and damages by 20% per turn for 4 turns";
+                return "Increase defence by 50%";
             }
             else
             {
@@ -323,61 +179,25 @@ public class CardInfusion
         }
         else if (card.infusion == Card.Infusion.Ice && card.suit == Card.Suit.Heart)
         {
-            if (card.rank == Card.Rank.N1)
+            if (card.rank.IsNumberCard())
             {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N2)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N3)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N4)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N5)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N6)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N7)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N8)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N9)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N10)
-            {
-                return "";
+                return "Heal " + (card.rank.ToNumber()/2) + "% over time";
             }
             else if (card.rank == Card.Rank.Jack)
             {
-                return "";
+                return "Heal 10% over time";
             }
             else if (card.rank == Card.Rank.Queen)
             {
-                return "";
+                return "Heal by 15% over time";
             }
             else if (card.rank == Card.Rank.King)
             {
-                return "";
+                return "Heal 20% over time";
             }
             else if (card.rank == Card.Rank.Ace)
             {
-                return "";
+                return "Heal 25% over time";
             }
             else
             {
@@ -386,61 +206,25 @@ public class CardInfusion
         }
         else if (card.infusion == Card.Infusion.Ice && card.suit == Card.Suit.Spade)
         {
-            if (card.rank == Card.Rank.N1)
+            if (card.rank.IsNumberCard())
             {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N2)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N3)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N4)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N5)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N6)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N7)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N8)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N9)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N10)
-            {
-                return "";
+                return "Deal " + (card.rank.ToNumber()/2) + " damage to all targets";
             }
             else if (card.rank == Card.Rank.Jack)
             {
-                return "";
+                return "Deal 10 damage to all targets";
             }
             else if (card.rank == Card.Rank.Queen)
             {
-                return "";
+                return "Deal 15 damage to all targets";
             }
             else if (card.rank == Card.Rank.King)
             {
-                return "";
+                return "Deal 20 damage to all targets";
             }
             else if (card.rank == Card.Rank.Ace)
             {
-                return "";
+                return "Deal 25 damage to all targets";
             }
             else
             {
@@ -512,61 +296,25 @@ public class CardInfusion
         }
         else if (card.infusion == Card.Infusion.Lightning && card.suit == Card.Suit.Diamond)
         {
-            if (card.rank == Card.Rank.N1)
+            if (card.rank.IsNumberCard())
             {
-                return "take negative effects from the target and give to the caster";
-            }
-            else if (card.rank == Card.Rank.N2)
-            {
-                return "if receiver is weak to lighning, increase the following by 100%: damage reduced by 5%";
-            }
-            else if (card.rank == Card.Rank.N3)
-            {
-                return "if receiver is weak to lighning, increase the following by 100%: damage increased by 5%";
-            }
-            else if (card.rank == Card.Rank.N4)
-            {
-                return "if receiver is weak to lightning, increase the following by 100 %: damage received decreased by 5%";
-            }
-            else if (card.rank == Card.Rank.N5)
-            {
-                return "if receiver is weak to lightning, increase the following by 100 %: damage received increased by 5%";
-            }
-            else if (card.rank == Card.Rank.N6)
-            {
-                return "if receiver is weak to lightning, increase the following by 100 %: deal damage for 1 hp per turn for 2 turns";
-            }
-            else if (card.rank == Card.Rank.N7)
-            {
-                return "if receiver is weak to lightning, increase the following by 100 %: damage reduced by 20%";
-            }
-            else if (card.rank == Card.Rank.N8)
-            {
-                return "if receiver is weak to lightning, increase the following by 100 %: damage increased by 20%";
-            }
-            else if (card.rank == Card.Rank.N9)
-            {
-                return "if receiver is weak to lightning, increase the following by 100 %: damage received decreased by 20%";
-            }
-            else if (card.rank == Card.Rank.N10)
-            {
-                return "if receiver is weak to lightning, increase the following by 100 %: damage received increased by 20%";
+                return "increase damage by " + card.rank.ToNumber() + "%";
             }
             else if (card.rank == Card.Rank.Jack)
             {
-                return "if receiver is weak to lightning, increase the following by 100 %: damage by 10% max per turn for 6 turns";
+                return "increase damage by 20%";
             }
             else if (card.rank == Card.Rank.Queen)
             {
-                return "if receiver is weak to lightning, increase the following by 100 %: damage out increased by 50% and damage received decreased by 50%";
+                return "Increase damage by 30%";
             }
             else if (card.rank == Card.Rank.King)
             {
-                return "if receiver is weak to lightning, increase the following by 100 %: damage out reduced by 50% and damage received increased by 50%";
+                return "Increase damage by 40%";
             }
             else if (card.rank == Card.Rank.Ace)
             {
-                return "if receiver is weak to lightning, increase the following by 100 %: reduces damage out to 0 for 1 turn and damages by 20% per turn for 4 turns";
+                return "Increase damage by 50%";
             }
             else
             {
@@ -575,61 +323,25 @@ public class CardInfusion
         }
         else if (card.infusion == Card.Infusion.Lightning && card.suit == Card.Suit.Heart)
         {
-            if (card.rank == Card.Rank.N1)
+            if (card.rank.IsNumberCard())
             {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N2)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N3)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N4)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N5)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N6)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N7)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N8)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N9)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N10)
-            {
-                return "";
+                return "Deal " + (card.rank.ToNumber() / 2) + "% damage over time";
             }
             else if (card.rank == Card.Rank.Jack)
             {
-                return "";
+                return "Deal 10% damage over time";
             }
             else if (card.rank == Card.Rank.Queen)
             {
-                return "";
+                return "Deal 15% damage over time";
             }
             else if (card.rank == Card.Rank.King)
             {
-                return "";
+                return "Deal 20% damage over time";
             }
             else if (card.rank == Card.Rank.Ace)
             {
-                return "";
+                return "Deal 25% damage over time";
             }
             else
             {
@@ -638,61 +350,25 @@ public class CardInfusion
         }
         else if (card.infusion == Card.Infusion.Lightning && card.suit == Card.Suit.Spade)
         {
-            if (card.rank == Card.Rank.N1)
+            if (card.rank.IsNumberCard())
             {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N2)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N3)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N4)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N5)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N6)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N7)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N8)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N9)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N10)
-            {
-                return "";
+                return "Deal " + (card.rank.ToNumber() / 2) + " to " + (card.rank.ToNumber()*2) + " damage to a single target";
             }
             else if (card.rank == Card.Rank.Jack)
             {
-                return "";
+                return "Deal 10 - 40 damage to a single target";
             }
             else if (card.rank == Card.Rank.Queen)
             {
-                return "";
+                return "Deal 15 - 60 damage to a single target";
             }
             else if (card.rank == Card.Rank.King)
             {
-                return "";
+                return "Deal 20 - 80 damage to a single target";
             }
             else if (card.rank == Card.Rank.Ace)
             {
-                return "";
+                return "Deal 25 - 100 damage to a single target";
             }
             else
             {

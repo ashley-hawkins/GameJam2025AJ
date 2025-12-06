@@ -38,7 +38,7 @@ public struct Card
 
     public Suit suit;
     public Rank rank;
-    public Infusion infusion;
+    public Infusion? infusion;
 }
 
 static class CardExtensions
