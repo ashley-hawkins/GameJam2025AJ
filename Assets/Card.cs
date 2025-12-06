@@ -1,3 +1,5 @@
+using static Card;
+
 public struct Card
 {
     public enum Suit
@@ -37,4 +39,26 @@ public struct Card
     public Suit suit;
     public Rank rank;
     public Infusion infusion;
+}
+
+static class CardExtensions
+{
+    public static bool IsFaceCard(this Rank rank)
+    {
+        return rank == Rank.Jack || rank == Rank.Queen || rank == Rank.King;
+    }
+
+    public static bool IsNumberCard(this Rank rank)
+    {
+        return rank >= Rank.N1 && rank <= Rank.N10;
+    }
+
+    public static int ToNumber(this Rank rank)
+    {
+        if (rank.IsNumberCard())
+        {
+            return (int)rank + 1;
+        }
+        throw new System.ArgumentException("Rank is not a number card");
+    }
 }
