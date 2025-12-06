@@ -36,5 +36,5 @@ public struct Card
 
     private Suit suit;
     private Rank rank;
-    private Infusion infusion;
+    private Infusion? infusion;
 }
