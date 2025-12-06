@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 9b91b2df224d6314bab9cced837fb7df
+guid: 0924bdbc28044ef4e96d8e4ac457de36
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6284856086799644809
-    second: Evil Wizard_0
-  - first:
-      213: -7845527385399440392
-    second: Evil Wizard_1
+      213: -644754811941112700
+    second: Fire infusion_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -116,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Evil Wizard_0
+      name: Fire infusion_0
       rect:
         serializedVersion: 2
-        x: 14
+        x: 0
         y: 0
-        width: 32
-        height: 64
+        width: 10
+        height: 5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,30 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7770bd900b4b7c8a0800000000000000
-      internalID: -6284856086799644809
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Evil Wizard_1
-      rect:
-        serializedVersion: 2
-        x: 62
-        y: 0
-        width: 32
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8fbcaad09661f1390800000000000000
-      internalID: -7845527385399440392
+      spriteID: 484b6032aee5d07f0800000000000000
+      internalID: -644754811941112700
       vertices: []
       indices: 
       edges: []
@@ -173,8 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Evil Wizard_0: -6284856086799644809
-      Evil Wizard_1: -7845527385399440392
+      Fire infusion_0: -644754811941112700
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
