@@ -39,6 +39,62 @@ public class CardInfusion
             return description;
         }
 
+        public string DescribeAsSentenceSingle(string subjectOfEffect, string objectOfEffect)
+        {
+            if (attackChangePercent > 0)
+                return $"{subjectOfEffect} buffed {objectOfEffect}'s attack by {attackChangePercent}%";
+            if (attackChangePercent < 0)
+                return $"{subjectOfEffect} debuffed {objectOfEffect}'s attack by {-attackChangePercent}%";
+            if (defenceChangePercent > 0)
+                return $"{subjectOfEffect} buffed {objectOfEffect}'s defence by {defenceChangePercent}%";
+            if (defenceChangePercent < 0)
+                return $"{subjectOfEffect} debuffed {objectOfEffect}'s defence by {-defenceChangePercent}%";
+            if (healthChangePercent > 0)
+                return $"{subjectOfEffect} healed {objectOfEffect} by {healthChangePercent}%";
+            if (healthChangePercent < 0)
+                return $"{subjectOfEffect} damaged {objectOfEffect} by {-healthChangePercent}%";
+            if (healOverTimePercent > 0)
+                return $"{subjectOfEffect} slow-healed {objectOfEffect} by {healOverTimePercent}%";
+            if (healOverTimePercent < 0)
+                return $"{subjectOfEffect} slow-damaged {objectOfEffect} by {-healOverTimePercent}%";
+            if (splashDamage > 0)
+                return $"{subjectOfEffect} dealt {splashDamage} splash damage around {objectOfEffect}";
+            if (globalBuffChangePercent > 0)
+                return $"{subjectOfEffect} buffed {objectOfEffect} this turn by {globalBuffChangePercent}%";
+            if (globalBuffChangePercent < 0)
+                return $"{subjectOfEffect} debuffed {objectOfEffect} this turn by {-globalBuffChangePercent}%";
+            if (singleCardEffectIncreasePercent > 0)
+                return $"{subjectOfEffect} buffed {objectOfEffect}'s next card by {singleCardEffectIncreasePercent}%";
+            if (randomHealthChangeRangeMin != 0 || randomHealthChangeRangeMax != 0)
+                return $"{subjectOfEffect} changed {objectOfEffect}'s health by a random\namount between {randomHealthChangeRangeMin} and {randomHealthChangeRangeMax}";
+
+            return "ERROR.";
+            /*
+
+        if (splashDamage != 0)
+            description += $"Splash Damage: {splashDamage} ";
+        if (globalBuffChangePercent != 0)
+            description += $"Global Buff Change Percent: {globalBuffChangePercent}% ";
+        if (singleCardEffectIncreasePercent != 0)
+            description += $"Single Card Effect Increase Percent: {singleCardEffectIncreasePercent}% ";
+        if (randomHealthChangeRangeMin != 0 || randomHealthChangeRangeMax != 0)
+            description += $"Random Health Change Range: {randomHealthChangeRangeMin} to {randomHealthChangeRangeMax} ";
+        return description.Trim();
+    }
+            */
+        }
+
+        public bool IsPositiveEffect()
+        {
+            return attackChangePercent > 0 || defenceChangePercent > 0 || healthChangePercent > 0 || healOverTimePercent > 0 || splashDamage < 0 || globalBuffChangePercent > 0 || singleCardEffectIncreasePercent > 0 || (randomHealthChangeRangeMin > 0 && randomHealthChangeRangeMax > 0);
+        }
+
+
+        public bool IsNegativeEffect()
+        {
+            return attackChangePercent < 0 || defenceChangePercent < 0 || healthChangePercent < 0 || healOverTimePercent < 0 || splashDamage > 0 || globalBuffChangePercent < 0 || singleCardEffectIncreasePercent < 0 || (randomHealthChangeRangeMin < 0 && randomHealthChangeRangeMax < 0);
+        }
+
         public Effect Buffed(int buffPercentage)
         {
             var multiplier = (100 + buffPercentage) / 100;

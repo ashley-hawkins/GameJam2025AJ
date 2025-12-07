@@ -86,7 +86,12 @@ public class Enemy : MonoBehaviour
             cardTarget.ApplyEffect(effect);
             RemoveCardFromHand(cardIndex);
 
-            GameMaster.Instance.OutputText($"Enemy played {card} with {infusion} infusion on target {target}.\n" + effect.Describe());
+            GameMaster.Instance.OutputText(effect.DescribeAsSentenceSingle("Enemy " + (transform.GetSiblingIndex() + 1), target == 0 ? "Player" : "Enemy " + target));
+            if (target != 0 && effect.IsNegativeEffect() || target == 0 && effect.IsPositiveEffect())
+            {
+                GameMaster.Instance.OutputText("A self-sabotage!");
+
+            }
 
             --mana;
 

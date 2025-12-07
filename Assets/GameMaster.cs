@@ -34,6 +34,8 @@ public class GameMaster : MonoBehaviour
         print("test");
         playerData = new Player(playerHandDisplay);
         BeginPlayerTurn();
+        RefreshDisplays();
+        RefreshOutputText();
     }
 
     public void BeginPlayerTurn()
@@ -42,8 +44,13 @@ public class GameMaster : MonoBehaviour
         playerData.mana = playerData.maxMana;
         playerData.ReplenishHand(7);
         playerHandDisplay.DisplayHand(playerData.hand);
-        OutputText("Player's turn begins. Mana replenished.");
         RefreshDisplays();
+    }
+
+    public void RefreshOutputText()
+    {
+        
+        outputText.text = string.Join("\n", logLines);
     }
 
     public void OutputText(string text)
@@ -52,11 +59,11 @@ public class GameMaster : MonoBehaviour
         {
             logLines.Add(line);
         }
-        while (logLines.Count > 4)
+        while (logLines.Count > 6)
         {
             logLines.RemoveAt(0);
         }
-        outputText.text = string.Join("\n", logLines);
+        RefreshOutputText();
     }
 
     public void OnGoButtonPressed()
@@ -69,14 +76,14 @@ public class GameMaster : MonoBehaviour
 
         if (playerData.mana <= 0)
         {
-            OutputText("Not enough mana to play a card.");
+            OutputText("Not enough mana to play a card.\nYou should end your turn now.");
             return;
         }
 
         int selectedIndex = playerHandDisplay.SelectedIndex();
         if (selectedIndex == -1)
         {
-            OutputText("No card selected.");
+            OutputText("No card selected.\nPlease select a card to play.");
             return;
         }
         int selectedInfusionIndex = infusionButtonGroup.SelectedIndex();
@@ -114,7 +121,7 @@ public class GameMaster : MonoBehaviour
 
         if (playerTargetSelection == -1)
         {
-            OutputText("No target selected.");
+            OutputText("No target selected. Click a target.");
             return;
         }
 
@@ -129,12 +136,17 @@ public class GameMaster : MonoBehaviour
         }
 
         target.ApplyEffect(effect);
+
+        GameMaster.Instance.OutputText(effect.DescribeAsSentenceSingle("Player", playerTargetSelection == 0 ? "Player" : "Enemy " + (playerTargetSelection)));
+        if (playerTargetSelection == 0 && effect.IsNegativeEffect() || playerTargetSelection != 0 && effect.IsPositiveEffect())
+        {
+            GameMaster.Instance.OutputText("A self-sabotage!");
+        }
+
         playerData.RemoveCardFromHand(selectedIndex);
         --playerData.mana;
         RefreshDisplays();
         infusionButtonGroup.ClearSelection();
-
-        OutputText($"Played card at index {selectedIndex}.");
     }
 
     public void OnEndTurnButtonPressed()
