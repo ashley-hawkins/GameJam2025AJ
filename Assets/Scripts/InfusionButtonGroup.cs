@@ -2,15 +2,16 @@ using UnityEngine;
 
 public class InfusionButtonGroup : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public int SelectedIndex()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            var iconButton = transform.GetChild(i).GetComponent<IconButton>();
+            if (iconButton != null && iconButton.isSelected)
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 }
