@@ -91,23 +91,23 @@ public class CardInfusion
         {
             if (card.rank.IsNumberCard())
             {
-                return "" + card.rank.ToNumber() + " damage to a single target";
+                return "Increase card effects by " + card.rank.ToNumber() + "%";
             }
             else if (card.rank == Card.Rank.Jack)
             {
-                return "Deal 20 damage to a single target";
+                return "Increase card effects by 20%";
             }
             else if (card.rank == Card.Rank.Queen)
             {
-                return "Deal 30 damage to a single target";
+                return "Increase card effects by 30%";
             }
             else if (card.rank == Card.Rank.King)
             {
-                return "Deal 40 damage to a single target";
+                return "Increase card effects by 40%";
             }
             else if (card.rank == Card.Rank.Ace)
             {
-                return "Deal 50 damage to a single target";
+                return "Increase card effects by 50%";
             }
             else
             {
@@ -197,61 +197,25 @@ public class CardInfusion
         }
         else if (card.infusion == Card.Infusion.Ice && card.suit == Card.Suit.Club)
         {
-            if (card.rank == Card.Rank.N1)
+            if (card.rank.IsNumberCard())
             {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N2)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N3)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N4)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N5)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N6)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N7)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N8)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N9)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N10)
-            {
-                return "";
+                return "Decrease card effects by " + card.rank.ToNumber() + "%";
             }
             else if (card.rank == Card.Rank.Jack)
             {
-                return "";
+                return "Decrease card effects by 20%";
             }
             else if (card.rank == Card.Rank.Queen)
             {
-                return "";
+                return "Decrease card effects by 30%";
             }
             else if (card.rank == Card.Rank.King)
             {
-                return "";
+                return "Decrease card effects by 40%";
             }
             else if (card.rank == Card.Rank.Ace)
             {
-                return "";
+                return "Decrease card effects by 50%";
             }
             else
             {
@@ -341,61 +305,25 @@ public class CardInfusion
         }
         else if (card.infusion == Card.Infusion.Lightning && card.suit == Card.Suit.Club)
         {
-            if (card.rank == Card.Rank.N1)
+            if (card.rank.IsNumberCard())
             {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N2)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N3)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N4)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N5)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N6)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N7)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N8)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N9)
-            {
-                return "";
-            }
-            else if (card.rank == Card.Rank.N10)
-            {
-                return "";
+                return "Increase a single card effect by " + (card.rank.ToNumber() * 2) + "%";
             }
             else if (card.rank == Card.Rank.Jack)
             {
-                return "";
+                return "Increase a single card effect by 40%";
             }
             else if (card.rank == Card.Rank.Queen)
             {
-                return "";
+                return "Increase a single card effect by 60%";
             }
             else if (card.rank == Card.Rank.King)
             {
-                return "";
+                return "Increase a single card effect by 80%";
             }
             else if (card.rank == Card.Rank.Ace)
             {
-                return "";
+                return "Increase a single card effect by 100%";
             }
             else
             {
