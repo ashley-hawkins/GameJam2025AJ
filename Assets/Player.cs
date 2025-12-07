@@ -7,11 +7,13 @@ using System.Linq;
 public class Player
 {
     Random rng = new Random();
-    CardTarget playerTarget;
-    int defence;
-    int attack;
-    List<Card> deck;
-    List<Card> hand;
+    public CardTarget playerTarget;
+    public int defence;
+    public int attack;
+    public int mana = 0;
+    public int maxMana = 3;
+    public List<Card> deck;
+    public List<Card> hand;
 
     CardHandDisplay handDisplay;
 
@@ -23,6 +25,7 @@ public class Player
         ShuffleDeck();
         hand = new List<Card>();
         ReplenishHand(7);
+        mana = maxMana;
         handDisplay.DisplayHand(hand);
         UnityEngine.Debug.Log("aaaa");
     }
@@ -39,11 +42,18 @@ public class Player
             deck.RemoveAt(0);
         }
     }
-    // def shuffle(numbers: list[int]) -> list[int]:
-    //     for i in range(len(numbers) - 1, 0, -1):
-    //         j = random.randint(0, i)
-    //         numbers[i], numbers[j] = numbers[j], numbers[i]
-    //     return numbers
+
+    public void RemoveCardFromHand(int index)
+    {
+        if (index < 0 || index >= hand.Count)
+        {
+            return;
+        }
+        var theCard = hand[index];
+        hand.RemoveAt(index);
+        deck.Insert(rng.Next(0, deck.Count + 1), theCard);
+        handDisplay.DisplayHand(hand);
+    }
 
     public void ShuffleDeck()
     {

@@ -9,7 +9,7 @@ public class ManaDisplay : MonoBehaviour
     [SerializeField]
     private GameObject cellPrefab;
 
-    void SetProgress(int currentMana, int maxMana)
+    public void SetProgress(int currentMana, int maxMana)
     {
         while (transform.childCount < maxMana)
         {
@@ -37,11 +37,5 @@ public class ManaDisplay : MonoBehaviour
                 }
             }
         }
-    }
-
-    void Start()
-    {
-        // Test:
-        SetProgress(3, 5);
     }
 }

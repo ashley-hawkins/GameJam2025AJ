@@ -16,8 +16,47 @@ public class CardInfusion
         public int singleCardEffectIncreasePercent;
         public int randomHealthChangeRangeMin;
         public int randomHealthChangeRangeMax;
+
+        public string Describe()
+        {
+            string description = "Effect:";
+            if (attackChangePercent != 0)
+                description += $"\n - Attack Change Percent: {attackChangePercent}%";
+            if (defenceChangePercent != 0)
+                description += $"\n - Defence Change Percent: {defenceChangePercent}%";
+            if (healthChangePercent != 0)
+                description += $"\n - Health Change Percent: {healthChangePercent}%";
+            if (healOverTimePercent != 0)
+                description += $"\n - Heal Over Time Percent: {healOverTimePercent}%";
+            if (splashDamage != 0)
+                description += $"\n - Splash Damage: {splashDamage}";
+            if (globalBuffChangePercent != 0)
+                description += $"\n - Global Buff Change Percent: {globalBuffChangePercent}%";
+            if (singleCardEffectIncreasePercent != 0)
+                description += $"\n - Single Card Effect Increase Percent: {singleCardEffectIncreasePercent}%";
+            if (randomHealthChangeRangeMin != 0 || randomHealthChangeRangeMax != 0)
+                description += $"\n - Random Health Change Range: {randomHealthChangeRangeMin} to {randomHealthChangeRangeMax}";
+            return description;
+        }
+
+        public Effect Buffed(int buffPercentage)
+        {
+            var multiplier = (100 + buffPercentage) / 100;
+            return new Effect
+            {
+                attackChangePercent = attackChangePercent * multiplier,
+                defenceChangePercent = defenceChangePercent * multiplier,
+                healthChangePercent = healthChangePercent * multiplier,
+                healOverTimePercent = healOverTimePercent * multiplier,
+                splashDamage = splashDamage * multiplier,
+                globalBuffChangePercent = globalBuffChangePercent * multiplier,
+                singleCardEffectIncreasePercent = singleCardEffectIncreasePercent * multiplier,
+                randomHealthChangeRangeMin = randomHealthChangeRangeMin * multiplier,
+                randomHealthChangeRangeMax = randomHealthChangeRangeMax * multiplier,
+            };
+        }
     }
-    public Effect InfusionResult(Card card)
+    public static Effect InfusionResult(Card card)
     {
         if (card.infusion == Card.Infusion.Fire && card.suit == Card.Suit.Diamond)
         {

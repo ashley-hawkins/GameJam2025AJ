@@ -8,14 +8,7 @@ public class HealthBarDisplay : MonoBehaviour
     [SerializeField]
     private Transform healthBar;
 
-    void Start()
-    {
-        // Test
-        SetProgress(85, 100);
-    }
-
-
-    void SetProgress(int current, int max)
+    public void SetProgress(int current, int max)
     {
         healthText.text = current + " / " + max;
         float ratio = (float)current / max;
