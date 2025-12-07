@@ -233,10 +233,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+    x: 0.0015564202
+    y: 0.0068399454
+    width: 0.99610895
+    height: 0.98495215
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -488,6 +488,7 @@ GameObject:
   - component: {fileID: 392874161}
   - component: {fileID: 392874163}
   - component: {fileID: 392874162}
+  - component: {fileID: 392874164}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -579,6 +580,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 392874159}
   m_CullTransparentMesh: 1
+--- !u!114 &392874164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392874159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ec0f19219c62a58587c84426962278e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  healthText: {fileID: 2040266103}
+  healthBar: {fileID: 1851733080}
 --- !u!224 &458221167 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8279802709013355114, guid: 51385e26078af9a67bbe7ce57b1b917a, type: 3}
@@ -826,7 +841,7 @@ GameObject:
   - component: {fileID: 1211491471}
   - component: {fileID: 1211491470}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: HealthDisplayContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1146,7 +1161,7 @@ GameObject:
   - component: {fileID: 1509766505}
   - component: {fileID: 1509766504}
   m_Layer: 5
-  m_Name: GameObject (2)
+  m_Name: ManaDisplayContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1690,7 +1705,7 @@ GameObject:
   - component: {fileID: 1851733082}
   - component: {fileID: 1851733081}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
