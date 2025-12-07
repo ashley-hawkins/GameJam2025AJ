@@ -49,7 +49,7 @@ public class GameMaster : MonoBehaviour
 
     public void RefreshOutputText()
     {
-        
+
         outputText.text = string.Join("\n", logLines);
     }
 
@@ -156,7 +156,7 @@ public class GameMaster : MonoBehaviour
             OutputText("It's not your turn!");
             return;
         }
-
+        playerData.playerTarget.EndTurn();
         IsPlayerTurn = false;
         StartCoroutine(enemyTracker.TakeEnemiesTurns());
     }

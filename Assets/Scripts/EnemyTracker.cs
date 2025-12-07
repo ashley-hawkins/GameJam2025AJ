@@ -29,6 +29,7 @@ public class EnemyTracker : MonoBehaviour
             {
                 anyAlive = true;
                 yield return enemy.TakeTurn();
+                enemy.enemyTarget.EndTurn();
             }
         }
 

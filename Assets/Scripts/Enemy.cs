@@ -90,7 +90,12 @@ public class Enemy : MonoBehaviour
             if (target != 0 && effect.IsNegativeEffect() || target == 0 && effect.IsPositiveEffect())
             {
                 GameMaster.Instance.OutputText("A self-sabotage!");
+            }
 
+            if (cardTarget == GameMaster.Instance.PlayerTarget())
+            {
+                print("Player health: ");
+                print(cardTarget.health);
             }
 
             --mana;
