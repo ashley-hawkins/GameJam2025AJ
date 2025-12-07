@@ -3,11 +3,13 @@ using UnityEngine;
 
 public class CardHandDisplay : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject cardPrefab;
     public void DisplayHand(List<Card> hand)
     {
         while (transform.childCount < hand.Count)
         {
-            var cardGO = Instantiate(Resources.Load<GameObject>("UICard"), transform);
+            Instantiate(cardPrefab, transform);
         }
         while (transform.childCount > hand.Count)
         {
@@ -49,5 +51,10 @@ public class CardHandDisplay : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void DeselectAll()
+    {
+        DeselectAllBut(-1);
     }
 }

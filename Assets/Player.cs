@@ -19,6 +19,7 @@ public class Player
 
     public Player(CardHandDisplay handDisplay)
     {
+        playerTarget = new CardTarget(100, 100);
         UnityEngine.Debug.Log("aaaa1");
         this.handDisplay = handDisplay;
         deck = Deck.GetStandardDeck();
@@ -52,6 +53,7 @@ public class Player
         var theCard = hand[index];
         hand.RemoveAt(index);
         deck.Insert(rng.Next(0, deck.Count + 1), theCard);
+        handDisplay.DeselectAll();
         handDisplay.DisplayHand(hand);
     }
 

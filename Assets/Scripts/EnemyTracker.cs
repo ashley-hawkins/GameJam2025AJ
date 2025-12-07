@@ -22,6 +22,8 @@ public class EnemyTracker : MonoBehaviour
         bool anyAlive = false;
         for (int i = 0; i < EnemyCount(); ++i)
         {
+            print("Enemy " + i + " taking turn.");
+            print("Current health: " + GetEnemyAtIndex(i).enemyTarget.health);
             var enemy = GetEnemyAtIndex(i);
             if (enemy != null && !enemy.enemyTarget.IsDead())
             {
@@ -34,6 +36,6 @@ public class EnemyTracker : MonoBehaviour
         {
             GameMaster.Instance.OutputText("All enemies defeated! You win!");
         }
-        GameMaster.Instance.IsPlayerTurn = true;
+        GameMaster.Instance.BeginPlayerTurn();
     }
 }

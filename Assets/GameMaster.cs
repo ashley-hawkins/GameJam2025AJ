@@ -33,6 +33,7 @@ public class GameMaster : MonoBehaviour
         Instance = this;
         print("test");
         playerData = new Player(playerHandDisplay);
+        BeginPlayerTurn();
     }
 
     public void BeginPlayerTurn()
@@ -42,6 +43,7 @@ public class GameMaster : MonoBehaviour
         playerData.ReplenishHand(7);
         playerHandDisplay.DisplayHand(playerData.hand);
         OutputText("Player's turn begins. Mana replenished.");
+        RefreshDisplays();
     }
 
     public void OutputText(string text)
@@ -161,5 +163,15 @@ public class GameMaster : MonoBehaviour
     {
         manaDisplay.SetProgress(playerData.mana, playerData.maxMana);
         healthBarDisplay.SetProgress(playerData.playerTarget.health, playerData.playerTarget.maxHealth);
+    }
+
+    public void SelectSelf()
+    {
+        playerTargetSelection = 0;
+    }
+
+    public void SelectEnemy(int enemyIndex)
+    {
+        playerTargetSelection = enemyIndex + 1;
     }
 }

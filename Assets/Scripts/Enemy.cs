@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
 
     public Enemy()
     {
+        enemyTarget = new CardTarget(100, 100);
         UnityEngine.Debug.Log("aaaa1");
         deck = Deck.GetStandardDeck();
         ShuffleDeck();
@@ -93,5 +94,11 @@ public class Enemy : MonoBehaviour
 
             yield return new WaitForSeconds(2.0f);
         }
+    }
+
+    public void OnMouseDown()
+    {
+        print("AAAAAAAAAAAAAAAAAAAA");
+        GameMaster.Instance.SelectEnemy(transform.GetSiblingIndex());
     }
 }

@@ -7,4 +7,8 @@ public class GoButton : MonoBehaviour
     {
         GameMaster.Instance.OnGoButtonPressed();
     }
+    public void EndButtonPressed()
+    {
+        GameMaster.Instance.OnEndTurnButtonPressed();
+    }
 }
