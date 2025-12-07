@@ -13,7 +13,7 @@ public class RankSuitDisplayUI : MonoBehaviour
     private Image suitRenderer;
     [SerializeField]
     private Image rankRenderer;
-    void UpdateDisplay(Rank rank, Suit suit)
+    public void UpdateDisplay(Rank rank, Suit suit)
     {
         suitRenderer.sprite = suitSprites[(int)suit];
         rankRenderer.sprite = rankSprites[(int)rank];
@@ -22,6 +22,6 @@ public class RankSuitDisplayUI : MonoBehaviour
     void Start()
     {
         // Test:
-        UpdateDisplay(Rank.N5, Suit.Diamond);
+        // UpdateDisplay(Rank.N5, Suit.Diamond);
     }
 }

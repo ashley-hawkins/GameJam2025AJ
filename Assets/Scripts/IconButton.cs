@@ -10,17 +10,7 @@ public class IconButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     private Sprite highlightedSprite;
 
     private bool isHovered = false;
-    private bool _permanentlyHighlighted = false;
-    public bool PermanentlyHighlighted
-    {
-        get { return _permanentlyHighlighted; }
-        set
-        {
-            _permanentlyHighlighted = value;
-            UpdateHighlighting();
-        }
-    }
-
+    public bool isSelected { get; private set; } = false;
 
     public void Highlight()
     {
@@ -33,7 +23,7 @@ public class IconButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     void UpdateHighlighting()
     {
-        if (_permanentlyHighlighted || isHovered)
+        if (isSelected || isHovered)
         {
             Highlight();
         }
@@ -62,5 +52,23 @@ public class IconButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         isHovered = false;
         UpdateHighlighting();
+    }
+
+    public void ToggleSelection()
+    {
+        isSelected = !isSelected;
+        if (isSelected)
+        {
+            for (int i = 0; i < transform.parent.childCount; i++)
+            {
+                if (transform.GetSiblingIndex() == i) continue;
+                var sibling = transform.parent.GetChild(i).GetComponent<IconButton>();
+                if (sibling != null && sibling != this)
+                {
+                    sibling.isSelected = false;
+                    sibling.UpdateHighlighting();
+                }
+            }
+        }
     }
 }

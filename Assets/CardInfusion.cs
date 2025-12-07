@@ -5,334 +5,347 @@ using UnityEngine;
 
 public class CardInfusion
 {
-    public string InfusionType(Card card)
+    public struct Effect
     {
-        if (card.infusion == Card.Infusion.Fire && card.suit == Card.Suit.Diamond) {
+        public int attackChangePercent;
+        public int defenceChangePercent;
+        public int healthChangePercent;
+        public int healOverTimePercent;
+        public int splashDamage;
+        public int globalBuffChangePercent;
+        public int singleCardEffectIncreasePercent;
+        public int randomHealthChangeRangeMin;
+        public int randomHealthChangeRangeMax;
+    }
+    public Effect InfusionResult(Card card)
+    {
+        if (card.infusion == Card.Infusion.Fire && card.suit == Card.Suit.Diamond)
+        {
             if (card.rank.IsNumberCard())
             {
-                return "Decrease attack by " + card.rank.ToNumber() + "%";
+                return new Effect { attackChangePercent = -card.rank.ToNumber() };
             }
             else if (card.rank == Card.Rank.Jack)
             {
-                return "Decrease attack by 20%";
+                return new Effect { attackChangePercent = -20 };
             }
             else if (card.rank == Card.Rank.Queen)
             {
-                return "Decrease attack by 30%";
+                return new Effect { attackChangePercent = -30 };
             }
             else if (card.rank == Card.Rank.King)
             {
-                return "Decrease attack by 40%";
+                return new Effect { attackChangePercent = -40 };
             }
             else if (card.rank == Card.Rank.Ace)
             {
-                return "Decrease attack by 50%";
+                return new Effect { attackChangePercent = -50 };
             }
             else
             {
-                return "";
+                throw new System.Exception("Invalid card rank");
             }
         }
         else if (card.infusion == Card.Infusion.Fire && card.suit == Card.Suit.Heart)
         {
             if (card.rank.IsNumberCard())
             {
-                return "Heal by " + card.rank.ToNumber() + "%";
+                return new Effect { healthChangePercent = card.rank.ToNumber() };
             }
             else if (card.rank == Card.Rank.Jack)
             {
-                return "Heal by 20%";
+                return new Effect { healthChangePercent = 20 };
             }
             else if (card.rank == Card.Rank.Queen)
             {
-                return "Heal by 30%";
+                return new Effect { healthChangePercent = 30 };
             }
             else if (card.rank == Card.Rank.King)
             {
-                return "Heal by 40%";
+                return new Effect { healthChangePercent = 40 };
             }
             else if (card.rank == Card.Rank.Ace)
             {
-                return "Heal by 50%";
+                return new Effect { healthChangePercent = 50 };
             }
             else
             {
-                return "";
+                throw new System.Exception("Invalid card rank");
             }
         }
         else if (card.infusion == Card.Infusion.Fire && card.suit == Card.Suit.Spade)
         {
             if (card.rank.IsNumberCard())
             {
-                return "Deal " + card.rank.ToNumber() + " damage to a single target";
+                return new Effect { attackChangePercent = card.rank.ToNumber() };
             }
             else if (card.rank == Card.Rank.Jack)
             {
-                return "Deal 20 damage to a single target";
+                return new Effect { attackChangePercent = 20 };
             }
             else if (card.rank == Card.Rank.Queen)
             {
-                return "Deal 30 damage to a single target";
+                return new Effect { attackChangePercent = 30 };
             }
             else if (card.rank == Card.Rank.King)
             {
-                return "Deal 40 damage to a single target";
+                return new Effect { attackChangePercent = 40 };
             }
             else if (card.rank == Card.Rank.Ace)
             {
-                return "Deal 50 damage to a single target";
+                return new Effect { attackChangePercent = 50 };
             }
             else
             {
-                return "";
+                throw new System.Exception("Invalid card rank");
             }
         }
         else if (card.infusion == Card.Infusion.Fire && card.suit == Card.Suit.Club)
         {
             if (card.rank.IsNumberCard())
             {
-                return "Increase card effects by " + card.rank.ToNumber() + "%";
+                return new Effect { globalBuffChangePercent = card.rank.ToNumber() };
             }
             else if (card.rank == Card.Rank.Jack)
             {
-                return "Increase card effects by 20%";
+                return new Effect { globalBuffChangePercent = 20 };
             }
             else if (card.rank == Card.Rank.Queen)
             {
-                return "Increase card effects by 30%";
+                return new Effect { globalBuffChangePercent = 30 };
             }
             else if (card.rank == Card.Rank.King)
             {
-                return "Increase card effects by 40%";
+                return new Effect { globalBuffChangePercent = 40 };
             }
             else if (card.rank == Card.Rank.Ace)
             {
-                return "Increase card effects by 50%";
+                return new Effect { globalBuffChangePercent = 50 };
             }
             else
             {
-                return "";
+                throw new System.Exception("Invalid card rank");
             }
         }
         else if (card.infusion == Card.Infusion.Ice && card.suit == Card.Suit.Diamond)
         {
             if (card.rank.IsNumberCard())
             {
-                return "increase defence by " + card.rank.ToNumber() + "%";
+                return new Effect { defenceChangePercent = card.rank.ToNumber() };
             }
             else if (card.rank == Card.Rank.Jack)
             {
-                return "increase defence by 20%";
+                return new Effect { defenceChangePercent = -20 };
             }
             else if (card.rank == Card.Rank.Queen)
             {
-                return "Increase defence by 30%";
+                return new Effect { defenceChangePercent = -30 };
             }
             else if (card.rank == Card.Rank.King)
             {
-                return "Increase defence by 40%";
+                return new Effect { defenceChangePercent = -40 };
             }
             else if (card.rank == Card.Rank.Ace)
             {
-                return "Increase defence by 50%";
+                return new Effect { defenceChangePercent = -50 };
             }
             else
             {
-                return "";
+                throw new System.Exception("Invalid card rank");
             }
         }
         else if (card.infusion == Card.Infusion.Ice && card.suit == Card.Suit.Heart)
         {
             if (card.rank.IsNumberCard())
             {
-                return "Heal " + (card.rank.ToNumber()/2) + "% over time";
+                return new Effect { healOverTimePercent = card.rank.ToNumber() };
             }
             else if (card.rank == Card.Rank.Jack)
             {
-                return "Heal 10% over time";
+                return new Effect { healOverTimePercent = 10 };
             }
             else if (card.rank == Card.Rank.Queen)
             {
-                return "Heal by 15% over time";
+                return new Effect { healOverTimePercent = 15 };
             }
             else if (card.rank == Card.Rank.King)
             {
-                return "Heal 20% over time";
+                return new Effect { healOverTimePercent = 20 };
             }
             else if (card.rank == Card.Rank.Ace)
             {
-                return "Heal 25% over time";
+                return new Effect { healOverTimePercent = 25 };
             }
             else
             {
-                return "";
+                throw new System.Exception("Invalid card rank");
             }
         }
         else if (card.infusion == Card.Infusion.Ice && card.suit == Card.Suit.Spade)
         {
             if (card.rank.IsNumberCard())
             {
-                return "Deal " + (card.rank.ToNumber()/2) + " damage to all targets";
+                return new Effect { splashDamage = card.rank.ToNumber() / 2 };
             }
             else if (card.rank == Card.Rank.Jack)
             {
-                return "Deal 10 damage to all targets";
+                return new Effect { splashDamage = 10 };
             }
             else if (card.rank == Card.Rank.Queen)
             {
-                return "Deal 15 damage to all targets";
+                return new Effect { splashDamage = 15 };
             }
             else if (card.rank == Card.Rank.King)
             {
-                return "Deal 20 damage to all targets";
+                return new Effect { splashDamage = 20 };
             }
             else if (card.rank == Card.Rank.Ace)
             {
-                return "Deal 25 damage to all targets";
+                return new Effect { splashDamage = 25 };
             }
             else
             {
-                return "";
+                throw new System.Exception("Invalid card rank");
             }
         }
         else if (card.infusion == Card.Infusion.Ice && card.suit == Card.Suit.Club)
         {
             if (card.rank.IsNumberCard())
             {
-                return "Decrease card effects by " + card.rank.ToNumber() + "%";
+                return new Effect { globalBuffChangePercent = card.rank.ToNumber() };
             }
             else if (card.rank == Card.Rank.Jack)
             {
-                return "Decrease card effects by 20%";
+                return new Effect { globalBuffChangePercent = 20 };
             }
             else if (card.rank == Card.Rank.Queen)
             {
-                return "Decrease card effects by 30%";
+                return new Effect { globalBuffChangePercent = 30 };
             }
             else if (card.rank == Card.Rank.King)
             {
-                return "Decrease card effects by 40%";
+                return new Effect { globalBuffChangePercent = 40 };
             }
             else if (card.rank == Card.Rank.Ace)
             {
-                return "Decrease card effects by 50%";
+                return new Effect { globalBuffChangePercent = 50 };
             }
             else
             {
-                return "";
+                throw new System.Exception("Invalid card rank");
             }
         }
         else if (card.infusion == Card.Infusion.Lightning && card.suit == Card.Suit.Diamond)
         {
             if (card.rank.IsNumberCard())
             {
-                return "increase damage by " + card.rank.ToNumber() + "%";
+                return new Effect { attackChangePercent = card.rank.ToNumber() };
             }
             else if (card.rank == Card.Rank.Jack)
             {
-                return "increase damage by 20%";
+                return new Effect { attackChangePercent = 20 };
             }
             else if (card.rank == Card.Rank.Queen)
             {
-                return "Increase damage by 30%";
+                return new Effect { attackChangePercent = 30 };
             }
             else if (card.rank == Card.Rank.King)
             {
-                return "Increase damage by 40%";
+                return new Effect { attackChangePercent = 40 };
             }
             else if (card.rank == Card.Rank.Ace)
             {
-                return "Increase damage by 50%";
+                return new Effect { attackChangePercent = 50 };
             }
             else
             {
-                return "";
+                throw new System.Exception("Invalid card rank");
             }
         }
         else if (card.infusion == Card.Infusion.Lightning && card.suit == Card.Suit.Heart)
         {
             if (card.rank.IsNumberCard())
             {
-                return "Deal " + (card.rank.ToNumber() / 2) + "% damage over time";
+                return new Effect { healOverTimePercent = -card.rank.ToNumber() / 2 };
             }
             else if (card.rank == Card.Rank.Jack)
             {
-                return "Deal 10% damage over time";
+                return new Effect { healOverTimePercent = -10 };
             }
             else if (card.rank == Card.Rank.Queen)
             {
-                return "Deal 15% damage over time";
+                return new Effect { healOverTimePercent = -15 };
             }
             else if (card.rank == Card.Rank.King)
             {
-                return "Deal 20% damage over time";
+                return new Effect { healOverTimePercent = -20 };
             }
             else if (card.rank == Card.Rank.Ace)
             {
-                return "Deal 25% damage over time";
+                return new Effect { healOverTimePercent = -25 };
             }
             else
             {
-                return "";
+                throw new System.Exception("Invalid card rank");
             }
         }
         else if (card.infusion == Card.Infusion.Lightning && card.suit == Card.Suit.Spade)
         {
             if (card.rank.IsNumberCard())
             {
-                return "Deal " + (card.rank.ToNumber() / 2) + " to " + (card.rank.ToNumber()*2) + " damage to a single target";
+                return new Effect { randomHealthChangeRangeMin = card.rank.ToNumber() / 2, randomHealthChangeRangeMax = card.rank.ToNumber() * 2 };
             }
             else if (card.rank == Card.Rank.Jack)
             {
-                return "Deal 10 - 40 damage to a single target";
+                return new Effect { randomHealthChangeRangeMin = 10, randomHealthChangeRangeMax = 40 };
             }
             else if (card.rank == Card.Rank.Queen)
             {
-                return "Deal 15 - 60 damage to a single target";
+                return new Effect { randomHealthChangeRangeMin = 15, randomHealthChangeRangeMax = 60 };
             }
             else if (card.rank == Card.Rank.King)
             {
-                return "Deal 20 - 80 damage to a single target";
+                return new Effect { randomHealthChangeRangeMin = 20, randomHealthChangeRangeMax = 80 };
             }
             else if (card.rank == Card.Rank.Ace)
             {
-                return "Deal 25 - 100 damage to a single target";
+                return new Effect { randomHealthChangeRangeMin = 25, randomHealthChangeRangeMax = 100 };
             }
             else
             {
-                return "";
+                throw new System.Exception("Invalid card rank");
             }
         }
         else if (card.infusion == Card.Infusion.Lightning && card.suit == Card.Suit.Club)
         {
             if (card.rank.IsNumberCard())
             {
-                return "Increase a single card effect by " + (card.rank.ToNumber() * 2) + "%";
+                return new Effect { singleCardEffectIncreasePercent = card.rank.ToNumber() * 2 };
             }
             else if (card.rank == Card.Rank.Jack)
             {
-                return "Increase a single card effect by 40%";
+                return new Effect { singleCardEffectIncreasePercent = 40 };
             }
             else if (card.rank == Card.Rank.Queen)
             {
-                return "Increase a single card effect by 60%";
+                return new Effect { singleCardEffectIncreasePercent = 60 };
             }
             else if (card.rank == Card.Rank.King)
             {
-                return "Increase a single card effect by 80%";
+                return new Effect { singleCardEffectIncreasePercent = 80 };
             }
             else if (card.rank == Card.Rank.Ace)
             {
-                return "Increase a single card effect by 100%";
+                return new Effect { singleCardEffectIncreasePercent = 100 };
             }
             else
             {
-                return "";
+                throw new System.Exception("Invalid card rank");
             }
         }
         else
         {
-            return "";
+            throw new System.Exception("Invalid card infusion or suit");
         }
     }
 }
